@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="light" variant="primary" class="header">
+    <b-navbar toggleable="lg" class="header">
       <b-navbar-brand>
         <img
           class="logo"
@@ -28,10 +28,9 @@ export default {
 @import "@/sass/styles.scss";
 
 .header {
-  background-color: $gray-800 !important;
-
+  background-color: $bg-clear-blue;
   .logo {
-    width: 100px;
+    width: 75px;
   }
 }
 </style>

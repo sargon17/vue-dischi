@@ -2,7 +2,7 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "../../sass/variables.sass"
+        "../../sass/variables.scss"
     ],
     "names": [],
     "file": "variables.css"

@@ -39,12 +39,10 @@ export default {
           return disc.genre.toLowerCase().includes(this.selected);
         }
       });
-      console.log(filteredValues);
 
       if (this.inputValue === "") {
         return filteredValues;
       } else {
-        console.log(this.selected);
         return filteredValues.filter((disc) => {
           return (
             disc.title.toLowerCase().includes(this.inputValue) ||

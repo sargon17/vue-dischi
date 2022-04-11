@@ -21,7 +21,7 @@
             size="sm"
             class="mr-sm-2"
             placeholder="Search by Artist, Album or Year"
-            v-model="inputValue"
+            v-model.trim="inputValue"
             @keyup="$emit('search', inputValue)"
           ></b-form-input>
           <b-button

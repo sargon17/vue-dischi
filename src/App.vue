@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <HeaderComponent @search="filterDiscs" />
+    <HeaderComponent @search="filterDiscs" @searchByGenre="filterByGenre" />
     <MainSection :discs="filteredDiscs" />
-    <!-- <p>{{ filteredDiscs }}</p> -->
   </div>
 </template>
 
@@ -21,6 +20,7 @@ export default {
     return {
       discs: [],
       inputValue: "",
+      selected: "",
     };
   },
   mounted() {
@@ -32,10 +32,20 @@ export default {
   },
   computed: {
     filteredDiscs() {
+      let filteredValues = this.discs.filter((disc) => {
+        if (this.selected === "") {
+          return disc;
+        } else {
+          return disc.genre.toLowerCase().includes(this.selected);
+        }
+      });
+      console.log(filteredValues);
+
       if (this.inputValue === "") {
-        return this.discs;
+        return filteredValues;
       } else {
-        return this.discs.filter((disc) => {
+        console.log(this.selected);
+        return filteredValues.filter((disc) => {
           return (
             disc.title.toLowerCase().includes(this.inputValue) ||
             disc.author.toLowerCase().includes(this.inputValue) ||
@@ -48,6 +58,9 @@ export default {
   methods: {
     filterDiscs(inputValue) {
       this.inputValue = inputValue;
+    },
+    filterByGenre(selected) {
+      this.selected = selected;
     },
   },
 };

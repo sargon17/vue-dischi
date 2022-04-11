@@ -10,10 +10,17 @@
       </b-navbar-brand>
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
+          <b-form-select
+            v-model="selected"
+            :options="options"
+            size="sm"
+            class="mx-3"
+            @change="$emit('searchByGenre', selected)"
+          ></b-form-select>
           <b-form-input
             size="sm"
             class="mr-sm-2"
-            placeholder="Search"
+            placeholder="Search by Artist, Album or Year"
             v-model="inputValue"
             @keyup="$emit('search', inputValue)"
           ></b-form-input>
@@ -38,6 +45,7 @@ import {
   BNavForm,
   BFormInput,
   BButton,
+  BFormSelect,
 } from "bootstrap-vue";
 
 export default {
@@ -45,6 +53,14 @@ export default {
   data() {
     return {
       inputValue: "",
+      selected: "",
+      options: [
+        { text: "All", value: "" },
+        { text: "Rock", value: "rock" },
+        { text: "Pop", value: "pop" },
+        { text: "Jazz", value: "jazz" },
+        { text: "Metal", value: "metal" },
+      ],
     };
   },
   components: {
@@ -54,6 +70,7 @@ export default {
     BNavForm,
     BFormInput,
     BButton,
+    BFormSelect,
   },
 };
 </script>

@@ -14,25 +14,18 @@
 </template>
 
 <script>
-import axios from "axios";
 import DiscCard from "@/components/DiscCard.vue";
 
 export default {
   name: "MainSection",
-  data() {
-    return {
-      discs: [],
-    };
-  },
   components: {
     DiscCard,
   },
-  mounted() {
-    axios
-      .get("https://flynn.boolean.careers/exercises/api/array/music")
-      .then((response) => {
-        this.discs = response.data.response;
-      });
+  props: {
+    discs: {
+      type: Array,
+      required: true,
+    },
   },
 };
 </script>
